@@ -1,21 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, SafeAreaView, StyleSheet } from 'react-native';
 
-export default function App() {
+const App = () => {
   return (
+    <SafeAreaView style={ styles.safeArea }>
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>Hello, World!</Text>
     </View>
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
+
   },
-});
+  safeArea: {
+  flex: 2,
+}
+})
+
+export default App;
