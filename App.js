@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { View, Text, SafeAreaView, StyleSheet, TouchableWithoutFeedbackBase } from 'react-native';
+import ColorBox from './components/ColorBox';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
          <View style={[styles.box, styles.orangeStyle]}>
            <Text style={styles.textStyle}>Orange: #cb4b16</Text>
          </View>
+         <ColorBox />
     </View>
     </SafeAreaView>
   );
