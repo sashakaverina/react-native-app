@@ -10,19 +10,10 @@ const App = () => {
         <Text style={styles.header}>
           Here are some boxes of different colors
         </Text>
-         <View style={[styles.box, styles.cyanStyle]}>
-           <Text style={styles.textStyle}>Cyan: #2aa198</Text>
-         </View>
-         <View style={[styles.box, styles.blueStyle]}>
-           <Text style={styles.textStyle}>Blue: #268bd2</Text>
-         </View>
-         <View style={[styles.box, styles.magentaStyle]}>
-           <Text style={styles.textStyle}>Magenta: #d33682</Text>
-         </View>
-         <View style={[styles.box, styles.orangeStyle]}>
-           <Text style={styles.textStyle}>Orange: #cb4b16</Text>
-         </View>
-         <ColorBox />
+         <ColorBox colorName="Cyan" colorHex="#2aa198"/>
+         <ColorBox colorName="Blue" colorHex="#268bd2"/>
+         <ColorBox colorName="Magenta" colorHex="#d33682"/>
+         <ColorBox colorName="Orange" colorHex="#cb4b16"/>
     </View>
     </SafeAreaView>
   );

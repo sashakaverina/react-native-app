@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native'
 
-const ColorBox = () => {
+const ColorBox = ({ colorName, colorHex }) => {
+    const boxColor = {
+        backgroundColor: colorHex,
+    }
     return (
-        <View style={[styles.box, styles.cyanStyle]}>
-        <Text style={styles.textStyle}>Cyan: #2aa198</Text>
+        <View style={[styles.box, boxColor]}>
+        <Text style={styles.textStyle}>{colorName}: {colorHex}</Text>
       </View>
 
     )
@@ -19,10 +22,7 @@ const styles = StyleSheet.create({
       borderRadius: 3,
       marginBottom: 10,
     },
-    cyanStyle: {
-      backgroundColor: '#2aa198',
-      
-    },
+    
     textStyle: {
         color: '#ffffff',
         fontWeight: 'bold',
