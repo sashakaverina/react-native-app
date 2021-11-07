@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 import PalettePreview from "../components/PalettePreview";
 const SOLARIZED = [
     { colorName: 'Base03', hexCode: '#002b36' },
@@ -45,23 +46,26 @@ const SOLARIZED = [
 
 const Home = ({navigation}) => {
     return (
-        <FlatList
+        <FlatList style={styles.list}
             data={COLOR_PALETTES}
             keyExtractor={item => item.paletteName}
             renderItem={({item}) => (
-            <TouchableOpacity onPress={() => {
-                navigation.navigate('ColorPalette', item);
-            }}
-            >
-            <Text>{item.paletteName}</Text>
-          </TouchableOpacity>
-        
+                <PalettePreview handlePress={() => {
+                    navigation.navigate('ColorPalette', item);
+                } }
+                    colorPalette={item} 
+                />      
             )}
-
-        />
-    
+        />    
     );
 };
+
+const styles = StyleSheet.create({
+  list: {
+      padding: 10,
+      backgroundColor: 'white',
+  }
+});
 
 
 export default Home;
