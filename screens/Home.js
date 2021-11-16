@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import React, { useState, useCallback, useEffect } from "react";
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, RefreshControl } from 'react-native';
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 import PalettePreview from "../components/PalettePreview";
 
@@ -29,6 +29,7 @@ const Home = ({navigation}) => {
                     colorPalette={item} 
                 />      
             )}
+            refreshControl={<RefreshControl refreshing={true} onRefresh={() => {}}/>}
         />    
     );
 };
