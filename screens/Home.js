@@ -6,6 +6,7 @@ import PalettePreview from "../components/PalettePreview";
 
 const Home = ({navigation}) => {
   const [colorPalettes, setColorPalettes] = useState()
+  const [isRefreshing, setIsRefreshing] = useState(false)
 
   const fetchColorPalettes = useCallback(async () => {
     const result = await fetch('https://color-palette-api.kadikraman.vercel.app/palettes');
@@ -18,6 +19,15 @@ const Home = ({navigation}) => {
   useEffect(() => {
     fetchColorPalettes();
   }, []);
+
+  const handleRefresh = useCallback( async () => {
+   setIsRefreshing(true);
+   await fetchColorPalettes();
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 1000)
+   
+  }, [])
     return (
         <FlatList style={styles.list}
             data={colorPalettes}
@@ -29,7 +39,8 @@ const Home = ({navigation}) => {
                     colorPalette={item} 
                 />      
             )}
-            refreshControl={<RefreshControl refreshing={true} onRefresh={() => {}}/>}
+            refreshing={isRefreshing}
+            onRefresh={handleRefresh}
         />    
     );
 };
