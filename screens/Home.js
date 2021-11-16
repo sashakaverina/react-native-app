@@ -42,7 +42,7 @@ const Home = ({navigation}) => {
             refreshing={isRefreshing}
             onRefresh={handleRefresh}
             ListHeaderComponent={<TouchableOpacity onPress={() => { navigation.navigate('ColorPaletteModal')}}>
-              <Text>Launch Modal</Text>
+              <Text style={styles.text}>Add a Color Scheme</Text>
             </TouchableOpacity>}
         />    
     );
@@ -52,6 +52,12 @@ const styles = StyleSheet.create({
   list: {
       padding: 10,
       backgroundColor: 'white',
+  },
+  text: {
+    fontSize: 22,
+    color: '#419192',
+    fontWeight: "bold",
+    marginBottom: 10,
   }
 });
 
