@@ -152,14 +152,20 @@ const COLORS = [
   { colorName: 'YellowGreen', hexCode: '#9ACD' },
 ];
 
-const ColorPaletteModal = () => {
-
+const ColorPaletteModal = ( {navigation }) => {
     const [name, setName] = useState('');
     const handleSubmit = useCallback(() => {
      if (!name) {
        Alert.alert('Please enter a palette name')
+     } else {
+       const newColorPalette = {
+         paletteName: name,
+         colors: []
+       }
+      navigation.navigate('Home', { newColorPalette })
      }
-    }, []);
+     
+    }, [name]);
 
     return (
         <ScrollView style={styles.container}>
@@ -170,6 +176,23 @@ const ColorPaletteModal = () => {
             onChangeText={setName}
             placeholder="Palette Name"
           />
+          <FlatList
+            data={COLORS}
+            keyExtractor={item => item.colorName}
+            renderItem={({ item }) => (
+              <View style={styles.color}>
+                <Text>
+                  {item.colorName}
+                </Text>
+                <Switch
+                value={true}
+                onValueChange={ () => {}}  
+                />
+              </View>
+
+            )}
+          />
+          
           <TouchableOpacity style={styles.button} onPress={handleSubmit}>
             <Text style={styles.buttonText}>
               Submit
@@ -214,5 +237,13 @@ const styles = StyleSheet.create({
     buttonText: {
       color: 'white',
       fontWeight: 'bold',
+    },
+    color: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: 'grey',
     }
   });

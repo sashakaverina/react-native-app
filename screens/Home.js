@@ -4,7 +4,8 @@ import { StyleSheet, FlatList, RefreshControl, TouchableOpacity, Text } from 're
 import { withSafeAreaInsets } from "react-native-safe-area-context";
 import PalettePreview from "../components/PalettePreview";
 
-const Home = ({navigation}) => {
+const Home = ({navigation, route}) => {
+  const newColorPalette = route.params ? route.params.newColorPalette : undefined ;
   const [colorPalettes, setColorPalettes] = useState()
   const [isRefreshing, setIsRefreshing] = useState(false)
 
@@ -28,6 +29,13 @@ const Home = ({navigation}) => {
     }, 1000)
    
   }, [])
+
+  useEffect(() => {
+    if (newColorPalette) {
+      setColorPalettes(palettes => [newColorPalette, ...palettes])
+    }
+  }, [newColorPalette]);
+
     return (
         <FlatList style={styles.list}
             data={colorPalettes}
@@ -55,7 +63,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 22,
-    color: '#419192',
+    color: 'teal',
     fontWeight: "bold",
     marginBottom: 20,
   }
